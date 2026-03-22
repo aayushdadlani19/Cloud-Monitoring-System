@@ -1,0 +1,82 @@
+groups:
+
+- name: system-alerts
+  rules:
+
+  - alert: HighCPUUsage
+    expr: 100 - (avg by(instance)(rate(node_cpu_seconds_total{mode="idle"}[5m])) * 100) > 80
+    for: 2m
+    labels:
+      severity: critical
+    annotations:
+      summary: "High CPU usage detected"
+      description: "CPU usage is above 80% on instance {{ $labels.instance }}"
+
+  - alert: HighMemoryUsage
+    expr: (node_memory_MemTotal_bytes - node_memory_MemAvailable_bytes) / node_memory_MemTotal_bytes * 100 > 85
+    for: 2m
+    labels:
+      severity: warning
+    annotations:
+      summary: "High Memory Usage"
+      description: "Memory usage is above 85%"
+
+  - alert: DiskSpaceLow
+    expr: node_filesystem_avail_bytes / node_filesystem_size_bytes * 100 < 15
+    for: 2m
+    labels:
+      severity: critical
+    annotations:
+      summary: "Low Disk Space"
+      description: "Disk space below 15%"
+
+- name: container-alerts
+  rules:
+
+  - alert: ContainerHighCPU
+    expr: sum(rate(container_cpu_usage_seconds_total[1m])) by (name) * 100 > 80
+    for: 2m
+    labels:
+      severity: warning
+    annotations:
+      summary: "Container CPU usage high"
+      description: "Container {{ $labels.name }} CPU usage above 80%"
+
+  - alert: ContainerMemoryHigh
+    expr: container_memory_usage_bytes > 1000000000
+    for: 2m
+    labels:
+      severity: warning
+    annotations:
+      summary: "Container memory usage high"
+      description: "Container memory above 1GB"
+
+  - alert: ContainerDown
+    expr: absent(container_last_seen)
+    for: 1m
+    labels:
+      severity: critical
+    annotations:
+      summary: "Container stopped"
+      description: "A container appears to be down"
+
+- name: application-alerts
+  rules:
+
+  - alert: AppDown
+    expr: up{job="monitoring-app"} == 0
+    for: 1m
+    labels:
+      severity: critical
+    annotations:
+      summary: "Application Down"
+      description: "Monitoring application is not reachable"
+
+  - alert: HighRequestRate
+    expr: rate(request_count[1m]) > 20
+    for: 1m
+    labels:
+      severity: warning
+    annotations:
+      summary: "High Request Rate"
+      description: "Application receiving high traffic"
