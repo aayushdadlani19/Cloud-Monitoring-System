@@ -1,235 +1,196 @@
-# 🚀 Cloud Monitoring System using Prometheus & Grafana
+# 🚀 Cloud Monitoring & Observability Platform
 
-A production-style **cloud infrastructure monitoring system** built using **Prometheus and Grafana** to collect, store, and visualize system metrics in real time.
+### Prometheus • Grafana • Loki • Promtail • cAdvisor • Docker • AWS EC2
 
-This project demonstrates how modern DevOps teams monitor cloud services to ensure **high availability, performance optimization, and proactive incident detection**.
+A **cloud-native monitoring and observability platform** designed to collect, aggregate, and visualize **infrastructure, container, and application metrics** in real time.
+
+This project implements a **production-inspired monitoring stack** using **Prometheus for metrics, Grafana for visualization, and the Grafana Loki stack for centralized logging**.
+The system is containerized using **Docker** and deployed on **AWS EC2**, demonstrating a scalable observability architecture commonly used in modern **DevOps and cloud environments**.
 
 ---
 
 # 📌 Project Overview
 
-Modern cloud systems require continuous monitoring to detect failures, resource bottlenecks, and performance degradation.
+Modern cloud systems require comprehensive observability to ensure reliability, performance optimization, and efficient troubleshooting.
 
-This project implements a **metrics-based monitoring pipeline** where Prometheus continuously scrapes system metrics and Grafana visualizes them using interactive dashboards.
+This project builds a **complete monitoring pipeline** that collects:
 
-The system monitors:
+* Infrastructure metrics
+* Container performance metrics
+* System resource utilization
+* Centralized application logs
 
-- CPU Usage
-- Memory Utilization
-- Disk Usage
-- Network Traffic
-- System Performance Metrics
+The monitoring stack enables **real-time infrastructure insights and log analysis through unified Grafana dashboards**.
 
 ---
 
 # 🏗️ Architecture
 
 ```
-+--------------------+
-|   Target System    |
-|   (Node Exporter)  |
-+---------+----------+
-          |
-          v
-+--------------------+
-|    Prometheus      |
-| Metric Collection  |
-|  & Storage (TSDB)  |
-+---------+----------+
-          |
-          v
-+--------------------+
-|      Grafana       |
-| Data Visualization |
-|   Dashboards       |
-+--------------------+
+                AWS EC2 Cloud Instance
+                        │
+                        ▼
+              ┌────────────────────┐
+              │      Docker        │
+              │ Monitoring Stack   │
+              └─────────┬──────────┘
+                        │
+        ┌───────────────┼────────────────┐
+        ▼               ▼                ▼
+  Node Exporter      cAdvisor        Promtail
+ (Host Metrics)   (Container Metrics) (Log Collector)
+        │               │                │
+        └───────────────┼────────────────┘
+                        ▼
+                  Prometheus
+            (Metrics Collection)
+                        │
+                        ▼
+                     Loki
+                (Log Aggregation)
+                        │
+                        ▼
+                     Grafana
+          (Dashboards & Observability)
 ```
 
 ---
 
 # ⚙️ Tech Stack
 
-| Category | Technology |
-|--------|-------------|
-| Monitoring | Prometheus |
-| Visualization | Grafana |
-| Metrics Exporter | Node Exporter |
-| Configuration | YAML |
-| OS Environment | Linux / WSL |
-| Version Control | Git & GitHub |
+| Category               | Tools         |
+| ---------------------- | ------------- |
+| Monitoring             | Prometheus    |
+| Visualization          | Grafana       |
+| Logging                | Grafana Loki  |
+| Log Shipping           | Promtail      |
+| Infrastructure Metrics | Node Exporter |
+| Container Metrics      | cAdvisor      |
+| Containerization       | Docker        |
+| Cloud Platform         | AWS EC2       |
+| Programming            | Python        |
+| Configuration          | YAML          |
 
 ---
 
 # ✨ Key Features
 
-- Real-time infrastructure monitoring
-- Time-series metric collection
-- Interactive Grafana dashboards
-- System performance visualization
-- Production-style monitoring architecture
-- Lightweight and scalable monitoring setup
+* Cloud infrastructure monitoring
+* Container performance monitoring
+* Centralized log aggregation
+* Real-time system observability
+* Interactive Grafana dashboards
+* Dockerized monitoring stack
+* Scalable cloud deployment on AWS
+* Unified metrics and log visualization
 
 ---
 
-# 📊 Metrics Monitored
+# 📊 Metrics & Logs Collected
 
-This monitoring system tracks important infrastructure metrics such as:
+The monitoring system tracks:
 
-- CPU Utilization
-- Memory Consumption
-- Disk Usage
-- Network Activity
-- System Load
-- Uptime Monitoring
+### Infrastructure Metrics
 
----
+* CPU utilization
+* Memory consumption
+* Disk usage
+* Network traffic
+* System load
 
-# 🛠️ Installation & Setup
+### Container Metrics
 
-## 1️⃣ Clone the Repository
+* Container CPU usage
+* Container memory usage
+* Container resource consumption
 
-```bash
-git clone https://github.com/yourusername/cloud-monitoring-system.git
-cd cloud-monitoring-system
-```
+### Log Monitoring
 
----
+* Application logs
+* System logs
+* Container logs
 
-## 2️⃣ Install Prometheus
-
-Download Prometheus from the official website:
-
-https://prometheus.io/download/
-
-Extract the folder and run:
-
-```bash
-./prometheus --config.file=prometheus.yml
-```
-
-Prometheus will start on:
-
-```
-http://localhost:9090
-```
+All metrics and logs are **visualized in Grafana dashboards for easy analysis and troubleshooting.**
 
 ---
 
-## 3️⃣ Install Node Exporter
+# 🐳 Dockerized Monitoring Stack
 
-Download Node Exporter from:
+The entire observability stack runs using Docker containers including:
 
-https://prometheus.io/download/
+* Prometheus
+* Grafana
+* Loki
+* Promtail
+* Node Exporter
+* cAdvisor
 
-Run the exporter:
-
-```bash
-./node_exporter
-```
-
-Node Exporter runs on:
-
-```
-http://localhost:9100
-```
+This approach enables **portable, scalable, and production-like deployment.**
 
 ---
 
-## 4️⃣ Install Grafana
+# ☁️ Cloud Deployment (AWS EC2)
 
-Download Grafana from:
+The monitoring platform is deployed on an **AWS EC2 instance**, simulating a real-world cloud infrastructure monitoring environment.
 
-https://grafana.com/grafana/download
+### Deployment Flow
 
-Start Grafana service.
-
-Open:
-
-```
-http://localhost:3000
-```
-
-Default credentials:
-
-```
-Username: admin
-Password: admin
-```
-
----
-
-## 5️⃣ Connect Grafana to Prometheus
-
-1. Open Grafana
-2. Go to **Settings → Data Sources**
-3. Select **Prometheus**
-4. Add URL:
-
-```
-http://localhost:9090
-```
-
-5. Click **Save & Test**
-
----
-
-# 📸 Dashboard Preview
-
-Add screenshots of your Grafana dashboards here.
-
-Example:
-
-```
-screenshots/cpu-monitoring.png
-screenshots/memory-monitoring.png
-screenshots/system-dashboard.png
-```
-
-Example markdown:
-
-```markdown
-![CPU Monitoring](screenshots/cpu-monitoring.png)
-![Memory Monitoring](screenshots/memory-monitoring.png)
-```
+1. Launch AWS EC2 instance
+2. Install Docker
+3. Deploy monitoring containers
+4. Configure Prometheus scraping targets
+5. Connect Grafana dashboards
+6. Monitor infrastructure and logs in real time
 
 ---
 
 # 📂 Project Structure
 
 ```
-cloud-monitoring-system
+cloud-monitoring-observability
 │
-├── prometheus.yml
-├── dashboards
-│   └── grafana-dashboard.json
+├── prometheus
+│   └── prometheus.yml
+│
+├── grafana
+│   └── dashboards
+│
+├── loki
+│   └── loki-config.yml
+│
+├── promtail
+│   └── promtail-config.yml
+│
+├── docker-compose.yml
 │
 ├── screenshots
-│   ├── cpu-monitor.png
-│   ├── memory-monitor.png
-│   └── system-dashboard.png
+│   ├── grafana-dashboard.png
+│   ├── metrics-dashboard.png
+│   └── logs-dashboard.png
 │
 └── README.md
 ```
 
 ---
 
-# 📈 Future Improvements
+# 📈 Real World Applications
 
-- Alerting system using **Alertmanager**
-- Kubernetes monitoring integration
-- Container monitoring with **cAdvisor**
-- Distributed microservice monitoring
-- Cloud deployment monitoring (AWS / GCP / Azure)
+* Cloud infrastructure monitoring
+* DevOps observability platforms
+* Microservices monitoring
+* Container performance analysis
+* Centralized log management
+* Production incident troubleshooting
 
 ---
 
-# 🚀 Real World Use Cases
+# 🔮 Future Improvements
 
-- Cloud infrastructure monitoring
-- DevOps observability systems
-- Performance monitoring
-- Production system debugging
-- Resource usage analysis
+* Kubernetes monitoring integration
+* Prometheus Alertmanager for alerts
+* Distributed cluster monitoring
+* CI/CD pipeline integration
+* Multi-cloud observability setup
 
 ---
 
@@ -237,14 +198,17 @@ cloud-monitoring-system
 
 **Aayush Dadlani**
 
-B.Tech CSE ( Cloud Computing And Automation )
+B.Tech Computer Science Engineering
 
 Interested in:
 
-- Cloud Computing
-- DevOps
-- System Monitoring
-- Distributed Systems
+* Cloud Computing
+* DevOps Engineering
+* Infrastructure Monitoring
+* Distributed Systems
 
 ---
 
+# ⭐ Support
+
+If you found this project useful, please **give it a star ⭐ on GitHub**.
