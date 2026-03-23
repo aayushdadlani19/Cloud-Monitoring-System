@@ -45,4 +45,16 @@ These metrics are processed and visualized through Grafana dashboards to provide
 •	Grafana queries Prometheus to visualize metrics in dashboards.
 
 
+<img width="819" height="471" alt="image" src="https://github.com/user-attachments/assets/fe59ea6b-c1ce-44ca-9ee8-97bafd81b613" />
+
+
+<img width="536" height="311" alt="Screenshot 2026-03-23 150706" src="https://github.com/user-attachments/assets/6f481d23-a612-4047-b392-87d7a5ddef67" />
+
+
+
+<img width="496" height="258" alt="image" src="https://github.com/user-attachments/assets/944b86a6-bc91-45a3-b9ea-61810b2cecc1" />
+
+
+**🛠️ Setup Instructions**
+
 
