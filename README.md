@@ -1,74 +1,250 @@
-**🚀 Cloud Monitoring System using Prometheus & Grafana**
+# 🚀 Cloud Monitoring System using Prometheus & Grafana
 
-A production-style cloud infrastructure monitoring system built using Prometheus and Grafana to collect, store, and visualize system metrics in real time. The project demonstrates how modern DevOps teams monitor cloud services to ensure high availability, performance optimization, and proactive incident detection.
-This project implements a metrics-based monitoring pipeline where Prometheus continuously scrapes system metrics and Grafana transforms them into interactive dashboards for real-time observability.
+A production-style **cloud infrastructure monitoring system** built using **Prometheus and Grafana** to collect, store, and visualize system metrics in real time.
 
+This project demonstrates how modern DevOps teams monitor cloud services to ensure **high availability, performance optimization, and proactive incident detection**.
 
-**📌 Project Overview**
+---
 
-Modern cloud systems require continuous monitoring to detect failures, resource bottlenecks, and performance degradation. This project simulates a real-world monitoring setup used in production environments.
+# 📌 Project Overview
 
-The system collects infrastructure metrics such as:
+Modern cloud systems require continuous monitoring to detect failures, resource bottlenecks, and performance degradation.
 
-•	CPU utilization 
+This project implements a **metrics-based monitoring pipeline** where Prometheus continuously scrapes system metrics and Grafana visualizes them using interactive dashboards.
 
-•	Memory usage 
+The system monitors:
 
-•	Disk I/O 
+- CPU Usage
+- Memory Utilization
+- Disk Usage
+- Network Traffic
+- System Performance Metrics
 
-•	Network activity 
+---
 
-•	System uptime 
+# 🏗️ Architecture
 
+```
++--------------------+
+|   Target System    |
+|   (Node Exporter)  |
++---------+----------+
+          |
+          v
++--------------------+
+|    Prometheus      |
+| Metric Collection  |
+|  & Storage (TSDB)  |
++---------+----------+
+          |
+          v
++--------------------+
+|      Grafana       |
+| Data Visualization |
+|   Dashboards       |
++--------------------+
+```
 
-These metrics are processed and visualized through Grafana dashboards to provide clear insights into system health and performance trends.
+---
 
+# ⚙️ Tech Stack
 
+| Category | Technology |
+|--------|-------------|
+| Monitoring | Prometheus |
+| Visualization | Grafana |
+| Metrics Exporter | Node Exporter |
+| Configuration | YAML |
+| OS Environment | Linux / WSL |
+| Version Control | Git & GitHub |
 
-**🏗️ Architecture**
+---
 
+# ✨ Key Features
 
+- Real-time infrastructure monitoring
+- Time-series metric collection
+- Interactive Grafana dashboards
+- System performance visualization
+- Production-style monitoring architecture
+- Lightweight and scalable monitoring setup
 
+---
 
-<img width="361" height="244" alt="Screenshot 2026-03-23 144310" src="https://github.com/user-attachments/assets/393b575a-e46c-4cec-b04a-bf2dcd4116e5" />
+# 📊 Metrics Monitored
 
+This monitoring system tracks important infrastructure metrics such as:
 
-**Workflow**
+- CPU Utilization
+- Memory Consumption
+- Disk Usage
+- Network Activity
+- System Load
+- Uptime Monitoring
 
+---
 
-•	Node Exporter exposes system metrics.
+# 🛠️ Installation & Setup
 
-•	Prometheus scrapes metrics at defined intervals.
+## 1️⃣ Clone the Repository
 
-•	Metrics are stored in the Prometheus time-series database.
+```bash
+git clone https://github.com/yourusername/cloud-monitoring-system.git
+cd cloud-monitoring-system
+```
 
-•	Grafana queries Prometheus to visualize metrics in dashboards.
+---
 
+## 2️⃣ Install Prometheus
 
-<img width="819" height="471" alt="image" src="https://github.com/user-attachments/assets/fe59ea6b-c1ce-44ca-9ee8-97bafd81b613" />
+Download Prometheus from the official website:
 
+https://prometheus.io/download/
 
-<img width="536" height="311" alt="Screenshot 2026-03-23 150706" src="https://github.com/user-attachments/assets/6f481d23-a612-4047-b392-87d7a5ddef67" />
+Extract the folder and run:
 
+```bash
+./prometheus --config.file=prometheus.yml
+```
 
+Prometheus will start on:
 
-<img width="496" height="258" alt="image" src="https://github.com/user-attachments/assets/944b86a6-bc91-45a3-b9ea-61810b2cecc1" />
+```
+http://localhost:9090
+```
 
+---
 
-**🛠️ Setup Instructions**
+## 3️⃣ Install Node Exporter
 
-<img width="270" height="50" alt="image" src="https://github.com/user-attachments/assets/b57ca5d4-60cb-4149-9ba0-940206b8dc69" />   
+Download Node Exporter from:
 
+https://prometheus.io/download/
 
+Run the exporter:
 
-<img width="679" height="64" alt="image" src="https://github.com/user-attachments/assets/b1d6a688-ef49-4664-a896-95d6c94af9fa" />
+```bash
+./node_exporter
+```
 
+Node Exporter runs on:
 
-<img width="397" height="90" alt="image" src="https://github.com/user-attachments/assets/da7ae4dc-a6ca-48d0-88c9-665395d72522" />
+```
+http://localhost:9100
+```
 
+---
 
+## 4️⃣ Install Grafana
 
+Download Grafana from:
 
+https://grafana.com/grafana/download
 
+Start Grafana service.
 
+Open:
+
+```
+http://localhost:3000
+```
+
+Default credentials:
+
+```
+Username: admin
+Password: admin
+```
+
+---
+
+## 5️⃣ Connect Grafana to Prometheus
+
+1. Open Grafana
+2. Go to **Settings → Data Sources**
+3. Select **Prometheus**
+4. Add URL:
+
+```
+http://localhost:9090
+```
+
+5. Click **Save & Test**
+
+---
+
+# 📸 Dashboard Preview
+
+Add screenshots of your Grafana dashboards here.
+
+Example:
+
+```
+screenshots/cpu-monitoring.png
+screenshots/memory-monitoring.png
+screenshots/system-dashboard.png
+```
+
+Example markdown:
+
+```markdown
+![CPU Monitoring](screenshots/cpu-monitoring.png)
+![Memory Monitoring](screenshots/memory-monitoring.png)
+```
+
+---
+
+# 📂 Project Structure
+
+```
+cloud-monitoring-system
+│
+├── prometheus.yml
+├── dashboards
+│   └── grafana-dashboard.json
+│
+├── screenshots
+│   ├── cpu-monitor.png
+│   ├── memory-monitor.png
+│   └── system-dashboard.png
+│
+└── README.md
+```
+
+---
+
+# 📈 Future Improvements
+
+- Alerting system using **Alertmanager**
+- Kubernetes monitoring integration
+- Container monitoring with **cAdvisor**
+- Distributed microservice monitoring
+- Cloud deployment monitoring (AWS / GCP / Azure)
+
+---
+
+# 🚀 Real World Use Cases
+
+- Cloud infrastructure monitoring
+- DevOps observability systems
+- Performance monitoring
+- Production system debugging
+- Resource usage analysis
+
+---
+
+# 👨‍💻 Author
+
+**Aayush Dadlani**
+
+B.Tech CSE Cloud Computing And Automation 
+
+Interested in:
+
+- Cloud Computing
+- DevOps
+- System Monitoring
+- Distributed Systems
+
+---
 
