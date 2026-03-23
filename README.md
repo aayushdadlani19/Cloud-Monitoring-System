@@ -29,3 +29,16 @@ These metrics are processed and visualized through Grafana dashboards to provide
 
 
 
+
+<img width="361" height="244" alt="Screenshot 2026-03-23 144310" src="https://github.com/user-attachments/assets/393b575a-e46c-4cec-b04a-bf2dcd4116e5" />
+
+
+**Workflow**
+
+•	Node Exporter exposes system metrics.
+•	Prometheus scrapes metrics at defined intervals.
+•	Metrics are stored in the Prometheus time-series database.
+•	Grafana queries Prometheus to visualize metrics in dashboards.
+
+
+
