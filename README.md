@@ -237,7 +237,7 @@ cloud-monitoring-system
 
 **Aayush Dadlani**
 
-B.Tech CSE Cloud Computing And Automation 
+B.Tech CSE ( Cloud Computing And Automation )
 
 Interested in:
 
