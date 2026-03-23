@@ -57,4 +57,18 @@ These metrics are processed and visualized through Grafana dashboards to provide
 
 **🛠️ Setup Instructions**
 
+<img width="270" height="50" alt="image" src="https://github.com/user-attachments/assets/b57ca5d4-60cb-4149-9ba0-940206b8dc69" />   
+
+
+
+<img width="679" height="64" alt="image" src="https://github.com/user-attachments/assets/b1d6a688-ef49-4664-a896-95d6c94af9fa" />
+
+
+<img width="397" height="90" alt="image" src="https://github.com/user-attachments/assets/da7ae4dc-a6ca-48d0-88c9-665395d72522" />
+
+
+
+
+
+
 
