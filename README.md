@@ -198,7 +198,7 @@ cloud-monitoring-observability
 
 **Aayush Dadlani**
 
-B.Tech Computer Science Engineering
+B.Tech CSE ( Cloud Computing and Automation )
 
 Interested in:
 
@@ -209,6 +209,4 @@ Interested in:
 
 ---
 
-# ⭐ Support
 
-If you found this project useful, please **give it a star ⭐ on GitHub**.
