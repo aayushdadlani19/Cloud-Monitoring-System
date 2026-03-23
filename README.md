@@ -9,13 +9,20 @@ This project implements a metrics-based monitoring pipeline where Prometheus con
 Modern cloud systems require continuous monitoring to detect failures, resource bottlenecks, and performance degradation. This project simulates a real-world monitoring setup used in production environments.
 
 The system collects infrastructure metrics such as:
+
 •	CPU utilization 
+
 •	Memory usage 
+
 •	Disk I/O 
+
 •	Network activity 
+
 •	System uptime 
 
+
 These metrics are processed and visualized through Grafana dashboards to provide clear insights into system health and performance trends.
+
 
 
 **🏗️ Architecture**
